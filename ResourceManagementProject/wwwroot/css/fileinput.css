@@ -1,0 +1,49 @@
+.file_upload {
+  position: relative;
+  text-align: center;
+  min-width: 90px;
+
+  background: #0082c8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: normal;
+  cursor: pointer;
+
+  padding: 12px 20px;
+  margin-right: 10px;
+}
+
+a.file_upload {
+  display: inline-block;
+}
+
+.file_upload .btn_lbl {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.file_upload .btn_colorlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0082c8;
+  border-radius: 6px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.file_upload input[type="file"] {
+  position: absolute;
+  top: 3px;
+  left: -88px;
+  font-weight: bold;
+  margin-left: 100%;
+  color: black;
+  vertical-align: middle;
+  outline: none;
+}

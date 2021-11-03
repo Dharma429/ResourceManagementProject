@@ -1,0 +1,495 @@
+* {box-sizing: border-box}
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  font: 12pt Helvetica Neue, Helvetica, Arial, sans-serif;
+  width: 90%;
+  margin: 0 auto;
+  overflow: visible;
+  padding: 5px 5px 5px 5px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 47%;
+  padding: 4px 10px 10px 10px;
+}
+
+.row {
+  border: 1px solid #e8e8e8;
+  background-color: #fafafa;
+  box-shadow: 6px 7px 7px 2px rgba(0,0,0,0.3);
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Floating column for inputs: 25% & 75% width */
+.col-25 {
+  float: left;
+  width: 10%;
+  margin-top: 4px;
+}
+
+.col-75 {
+  float: left;
+  width: 90%;
+  margin-top: 4px;
+}
+
+.column-10 {
+  float: left;
+  width: 0%;
+  padding: 10px 10px 10px 10px;
+}
+
+/* Grid design */
+.grid-container {
+  display: grid;
+  grid-template-columns: 25px auto auto 400px auto auto auto auto;
+  grid-template-rows: auto;
+  grid-gap: 2px 3px;
+  padding: 1px 8px 1px 8px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font: 11px bold Arial, Helvetica, sans-serif;
+  border-radius: 6px;
+}
+
+.griditem {
+  float: left;
+  background: #fafafa;
+  align-self: center;
+}
+
+.gridheader {
+  float: left;
+  padding: 10px 0;
+  border: 1px solid #0082c8;
+}
+
+.griditem-trash {
+  color: red;
+  font-size: 20px;
+  padding: 10px 0;
+  background-color: white;
+}
+
+/* Format for hyperlink strip */
+.hyperlinks {
+  overflow: auto;
+  width: 90%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.hyperlinks a:link {
+  color: #6eb43f;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.hyperlinks a:visited {
+  color: #6eb43f;
+  text-decoration: underline;
+}
+
+.hyperlinks a:hover {
+  color: #6eb43f;
+  text-decoration: underline;
+}
+
+.hyperlinks a:active {
+  color: #6eb43f;
+  text-decoration: underline;
+}
+
+/* Table format */
+.tablediv {
+  overflow: auto;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.gentable {
+  font: 11px Helvetica Neue, Helvetica, Arial, sans-serif;
+  border-collapse: separate;
+  margin: auto;
+  width: 100%;
+  table-layout: auto;
+  position: relative;
+}
+
+.gentable td {
+  white-space: nowrap;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.gentable td.right {
+  text-align: right;
+}
+
+.gentable td.center {
+  text-align: center;
+}
+
+.gentable th {
+  text-align: center;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.gentable td.inpfld {
+  border: none;
+  padding: 0px;
+  width: 250px;
+  white-space: nowrap;
+}
+
+.gentable td.highlight, th.highlight {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  white-space: nowrap;
+  font-weight: bold;
+  color: rgb(0, 0, 255);
+}
+
+.gentable td.rowheader, th.rowheader {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  white-space: nowrap;
+  font-weight: bold;
+  text-align: left;
+  position: sticky;
+  left: 0;
+  background-color: #dddddd;
+  color: black;
+}
+
+.gentable tr:nth-child(even) {
+  background-color: #ebebeb;
+}
+
+.gentable tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.gentable thead {
+  background-color: #6eb43f;
+  color: white;
+}
+
+.gentable tfoot {
+  background-color: #6eb43f;
+  color: white;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 6px 12px 0px 0px;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* definition for File Upload */
+.file-input {
+  width: 100%;
+  padding: 8px 10px 8px 10px;
+  margin: 5px 0 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 6px;
+  resize: vertical;
+  background: white;
+  font-size: 11px;
+}
+
+/* definition for input, select & textarea fields */
+select, textarea, input[type=text],input[type=tel],input[type=email], input[type=number], input[type=date], input[type=time], input[type=password] {
+  width: 100%;
+  padding: 8px 10px 8px 10px;
+  margin: 2px 0 5px 0;
+  display: inline;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 6px;
+  resize: vertical;
+  background: white;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.passtext[type=text] {
+  width: 100%;
+  padding: 8px 10px 8px 10px;
+  margin: 2px 0 5px 0;
+  display: inline;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 6px;
+  resize: vertical;
+  background: white;
+  font-size: 11px;
+  text-transform: none;
+}
+
+
+.gridinput[type=checkbox] {
+  width: 100%;
+  background-color: #fafafa;
+  display: inline-block;
+  border: none;
+  border-radius: 6px;
+  resize: vertical;
+  margin: auto;
+  padding: 0px;
+}
+
+.gridinput[type=text], .gridinput[type=number],.gridinput[type=email],.gridinput[type=tel], .gridinput[type=date], .gridinput[type=time], .gridselect {
+  width: 100%;
+  margin: 0px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 6px;
+  resize: vertical;
+  background: white;
+  font-size: 10px;
+}
+
+.gridtarea {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  margin: 0px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 6px;
+  resize: vertical;
+  background: white;
+  font-size: 10px;
+}
+
+input[type=checkbox]:hover {
+  border-color:#9ecaed;
+  box-shadow:0 0 10px #9ecaed;
+  outline: none;
+}
+
+textarea:focus, select:focus, textarea:focus, input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus, input[type=number]:focus, input[type=date]:focus, input[type=checkbox]:focus, input[type=password]:focus {
+  border-color:#9ecaed;
+  box-shadow:0 0 10px #9ecaed;
+  outline: none;
+}
+
+textarea:required, select:required, textarea:required, input[type=text]:required, input[type=tel]:required,input[type=email]:required,input[type=number]:required, input[type=date]:required, input[type=checkbox]:required, input[type=password]:required {
+  background-color: #f0faff;
+}
+
+textarea:disabled, select:disabled, textarea:disabled, input[type=text]:disabled,input[type=email]:disabled, input[type=tel]:disabled, input[type=date]:disabled, input[type=password]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+select:required:invalid {
+  color: gray;
+}
+
+option[value=""][disabled] {
+  display: none;
+}
+
+option {
+  color: black;
+}
+
+h3 {
+  padding: 5px 0 0 9px;
+  margin: 0;
+  font-size: 13px;
+  color: #0082c8;
+}
+
+/* Set a style for the submit/register button */
+.genbtn {
+  font-size: 12px;
+  font-weight: normal;
+  background-color: #0082c8;
+  color: white;
+  padding: 12px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  float:right;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.genbtn:hover {
+  opacity:1;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 15px 0 rgba(0,0,0,0.19);
+}
+
+.canbtn {
+  background-color: red;
+  color: white;
+  padding: 12px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: normal;
+  float:right;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.canbtn:hover {
+  opacity:1;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 15px 0 rgba(0,0,0,0.19);
+}
+
+.navbtn {
+  background-color: grey;
+  color: white;
+  padding: 12px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: normal;
+  float:right;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.navbtn:hover {
+  opacity:1;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 15px 0 rgba(0,0,0,0.19);
+}
+
+.genbtn:disabled, .canbtn:disabled, .navbtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 90px;
+  background-color: grey;
+  color: #fff;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 150%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.container>div .passeye {
+	position: relative;
+}
+
+.container>div .passeye>i {
+	position: absolute;
+	right: 15px;
+  top: 10px;
+	cursor: pointer
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, select, textarea, input [type=text], input [type=tel], input[type=number],input[type=email], input[type=date], input[type=password], input [type=checkbox], .gridinput [type=text], .gridselect {
+    width: 100%;
+  }
+
+  .griditem {
+    width: 100%;
+  }
+
+  .grid-container > div {
+    font-size: 9px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .header-right {
+    float: none;
+  }
+
+  .header-center {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}

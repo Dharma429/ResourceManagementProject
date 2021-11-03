@@ -1,0 +1,40 @@
+* {box-sizing: border-box}
+
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+/* Header */
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 2px 5px 2px 5px;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  overflow: visible;
+  padding: 5px 5px 5px 5px;
+}
+
+.row {
+  border: 1px solid #e8e8e8;
+  background-color: #fafafa;
+  box-shadow: 6px 7px 7px 2px rgba(0,0,0,0.3);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+}

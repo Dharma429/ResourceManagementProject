@@ -1,0 +1,296 @@
+﻿
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"] - Resource Management</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/common.css" />
+
+
+    <link rel="stylesheet" href="~/css/hmenuform.css" type="text/css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="~/img/Abrao Group Square Logo.ico" type="image/x-icon" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="~/js/paging.js"></script>
+    <style>
+        .clsedit {
+            text-align: center;
+        }
+
+        .clsdelete {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        var id = 0;
+        var name = "";
+        function clear() {
+            countryId = 0;
+            $("#txtName").val("");
+            $("#txtDesc").val("");
+            $("#txtActive").val("");
+        }
+        function gridTable(data) {
+
+            $('#gridTable').html("");
+            var headerRow = '<thead><tr>' +
+                '<th> Role Name</th >' +
+                '<th>Role Description #</th>' +
+                '<th>Created Date #</th>' +
+                '<th>Modified Date #</th>' +
+                '<th>Is Active #</th>' +
+                '<th>Edit #</th>' +
+                '<th>Delete #</th>'
+            '</tr > </thead>';
+
+            $("#gridTable").append(headerRow);
+            var row$;
+            if (data.length > 0) {
+                $.each(data, function (id, val) {
+                    var row = '<tr>' +
+                        '<td hidden="true" data-Id="' + val.Id + '">' + val.Id + '</td>' +
+                        '<td class="center"  data-Name="' + val.Name + '"><a href="#" onclick="pop(' + val.Id + ')">' + val.Name + '</td>' +
+                        '<td class="center" data-Desc="' + val.Description + '">' + val.Description + '</td>' +
+                        '<td class="center" data-Creat="' + val.CreatedDate + '">' + val.CreatedDate + '</td>' +
+                        '<td class="center" data-Mod="' + val.ModifiedDate + '">' + val.ModifiedDate + '</td>' +
+                        '<td class="center" data-Act="' + val.IsActive + '">' + val.IsActive + '</td>' +
+                        '<td class="clsedit"><i class="fa fa-edit" style="font-size:25px"></i></td>' +
+                        '<td class="clsdelete"> <i class="fa fa-trash" style="font-size:25px"></i></i></td>'
+
+                    '</tr>'
+
+                    row$ = row$ + row;
+                });
+            }
+            var tbody = "<tbody>" + row$ + "</tbody>";
+            $("#gridTable").append(tbody);
+            $('#gridTable').paging({ limit: 5 });
+        }
+        function gridCall() {
+            id = 0;
+            $.ajax({
+                type: 'GET',
+                url: '/Role/SearchData',
+                data: JSON.stringify({}),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data) {
+                        gridTable(data);
+                    }
+                    else {
+                        alert("fail");
+                    }
+
+                }
+
+            });
+
+        }
+        $(document).ready(function () {
+            gridCall();
+            $('#txtActive').attr('checked', 'checked');
+            $('#txtName').on('input', function (e) {
+
+            });
+            $(document).on("click", "#txtActive", function () {
+
+                if (this.checked)
+                    $('#txtActive').attr('checked', 'checked');
+                else
+                    $('#txtActive').removeAttr('checked');
+
+            });
+
+
+            $(document).on("focusout", '#txtName', function () {
+                var role = $('#txtName').val();
+                if (name != role) {
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Role/SearchList',
+                        data: JSON.stringify(role),
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                alert("Role already exist;");
+                                $('#txtName').val("");
+                            }
+
+
+                        }
+
+                    });
+                }
+
+            });
+            $(document).on("click", ".clsedit", function () {
+
+                id = $(this).closest('tr').find("[data-Id]").text();
+                var name1 = $(this).closest('tr').find("[data-Name]").text();
+                var desc = $(this).closest('tr').find("[data-Desc]").text();
+                var active = $(this).closest('tr').find("[data-Act]").text();
+                name = name1;
+                $("#txtName").val(name1);
+                $("#txtDesc").val(desc);
+                if (active == "true") {
+                    $('#txtActive').prop('checked', 'checked');
+                }
+                else
+                    $('#txtActive').removeAttr('checked');
+            });
+            $(document).on("click", ".clsdelete", function () {
+                id = $(this).closest('tr').find("[data-Id]").text();
+                if (confirm('Are you sure you want to delete.')) {
+
+
+                    $.ajax({
+                        type: 'Post',
+                        url: '/Role/Delete',
+                        data: JSON.stringify(id),
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data) {
+                                gridCall();
+                                alert("Deleted successfully.");
+                            }
+                            else {
+                                alert("fail");
+                            }
+
+                        }
+
+                    });
+                }
+            });
+
+            $("#btnSubmit").click(function (e) {
+
+                e.preventDefault();
+                var role = {
+                    Id: id != "" ? parseInt(id) : 0,
+                    Name: $("#txtName").val(),
+                    Description: $("#txtDesc").val(),
+                    IsActive: $("#txtActive").attr('checked') == "checked" ? true : false
+
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/Role/SaveRoleDetails',
+                    data: JSON.stringify(role),
+                    dataType: 'json',
+                    async: true,
+                    cache: false,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+
+                        if (data) {
+                            if (data == "-1") {
+                                alert("fail");
+                            }
+                            else {
+                                alert("success");
+                                gridCall();
+                                clear();
+
+                            }
+                        }
+                    },
+                });
+
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="~/img/innova.jpg" height="46" width="160">
+            <div class="header-center">
+                Innova Solutions
+            </div>
+            <div class="header-right">
+                <a href="/Role/Index"><i class="fa fa-home"></i> Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        "Ram"
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#profile">My Profile</a>
+                        <a href="#logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <form>
+        <div class="container">
+            <p></p>
+            <div class="row">
+                <h3>My Portal</h3>
+                <div class="column">
+                    <div class="col-25">
+                    </div>
+                    <div class="col-75">
+                        <label for="">Role Name</label>
+                        <input type="text" placeholder="Enter company name.." name="txtName" id="txtName" autocomplete="off" required tabindex=1>
+                    </div>
+                    <div class="col-25">
+                    </div>
+                    <div class="col-75">
+                        <label for="">Role Description</label>
+                        <input type="text" placeholder="Enter Skills.." name="txtDesc" id="txtDesc" autocomplete="off" required tabindex=3>
+                    </div>
+                    <div class="col-25">
+                    </div>
+                    <div class="col-75">
+                        <label for="">Is Active</label>
+                        <input type="checkbox" name="txtActive" id="txtActive" tabindex=5>
+                    </div>
+                    <div class="col-25">
+                    </div>
+                </div>
+                <div class="column-10">
+                </div>
+                <div class="column">
+                    <br>&nbsp;<br>
+                    <button type="reset" class="canbtn">Cancel</button>
+                    <button type="submit" id="btnSubmit" class="genbtn"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                    <p></p>
+                </div>
+            </div>
+            <p></p><br>
+            <div class="row">
+                <h3>Results</h3>
+                <p></p>
+                <div class="tablediv">
+                    <table class="gentable" id="gridTable"></table>
+                </div>
+                <p></p>
+                <p></p>
+            </div>
+            <br>
+            <br>
+        </div>
+    </form>
+</body>
+</html>
+
+

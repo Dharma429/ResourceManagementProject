@@ -1,0 +1,38 @@
+.collapsible {
+  cursor: pointer;
+  padding: 2px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 11px;
+  background-color: inherit;
+}
+
+.collactive {
+  color: black;
+  font-weight: bold;
+}
+
+.collactive:hover, .collapsible:hover {
+  background-color: #0082c8;
+  color: white;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: black;
+  font-weight: bold;
+  float: left;
+}
+
+.collactive:after {
+  content: "\2212";
+  color: black;
+}
+
+.content {
+  padding: 0 8px;
+  max-height: 0;
+  overflow: hidden;
+}
