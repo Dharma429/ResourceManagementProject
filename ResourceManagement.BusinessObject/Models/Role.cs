@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace ResourceManagementProject.ViewModels
+namespace ResourceManagement.BAL.Models
 {
-    public class RoleViewModel
+    public class Role
     {
         public int RoleId { get; set; }
         public string RoleName { get; set; }

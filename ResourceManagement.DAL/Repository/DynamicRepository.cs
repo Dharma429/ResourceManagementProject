@@ -74,11 +74,11 @@ namespace ResourceManagement.DAL.Repository
             return result;
         }
 
-        public void Delete(int id)
+        public int Delete(int id, string tableName)
         {
-            UnitOfWork.Connection.Execute(
-                "DELETE FROM T WHERE TId = @TId",
-                param: new { TId = id }
+            return UnitOfWork.Connection.Execute(
+                "DELETE FROM "+ tableName + " WHERE Id = @Id",
+                param: new { Id = id }
             );
         }
 

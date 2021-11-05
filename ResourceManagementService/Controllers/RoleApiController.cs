@@ -46,5 +46,17 @@ namespace ResourceManagementService.Controllers
         {
             return Ok(_roleService.SaveRole(role));
         }
+
+        [HttpGet("CheckRole")]
+        public async Task<ActionResult> CheckRole(string role)
+        {
+            return Ok(_roleService.CheckRole(role));
+        }
+
+        [HttpGet("DeleteRole")]
+        public async Task<ActionResult> DeleteRole( int Id)
+        {
+            return Ok(_roleService.DeleteRole(Id));
+        }
     }
 }

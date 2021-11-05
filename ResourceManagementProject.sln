@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManagementProject", "ResourceManagementProject\ResourceManagementProject.csproj", "{08BEC0C5-1ADE-448E-9FD5-6155971175C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManagementProject", "ResourceManagementProject\ResourceManagementProject.csproj", "{08BEC0C5-1ADE-448E-9FD5-6155971175C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManagement.BAL", "ResourceManagement.BAL\ResourceManagement.BAL.csproj", "{EFED1520-87E5-4108-BAA0-EC3D88C508B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManagement.BAL", "ResourceManagement.BAL\ResourceManagement.BAL.csproj", "{EFED1520-87E5-4108-BAA0-EC3D88C508B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManagement.Common", "ResourceManagement.Common\ResourceManagement.Common.csproj", "{6CA44783-BB52-44C8-9D57-95E6560AACBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManagement.Common", "ResourceManagement.Common\ResourceManagement.Common.csproj", "{6CA44783-BB52-44C8-9D57-95E6560AACBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManagement.DAL", "ResourceManagement.DAL\ResourceManagement.DAL.csproj", "{A27B08C5-E81D-4DDA-B7FB-67BFF28E46B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManagement.DAL", "ResourceManagement.DAL\ResourceManagement.DAL.csproj", "{A27B08C5-E81D-4DDA-B7FB-67BFF28E46B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManagementService", "ResourceManagementService\ResourceManagementService.csproj", "{E2FDE37E-BF56-4039-A5EB-9CB5D5C7AABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManagementService", "ResourceManagementService\ResourceManagementService.csproj", "{E2FDE37E-BF56-4039-A5EB-9CB5D5C7AABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManagement.BusinessObject", "ResourceManagement.BusinessObject\ResourceManagement.BusinessObject.csproj", "{B55B3D1A-D3ED-4B35-B0A5-4A4E19755756}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{E2FDE37E-BF56-4039-A5EB-9CB5D5C7AABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2FDE37E-BF56-4039-A5EB-9CB5D5C7AABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2FDE37E-BF56-4039-A5EB-9CB5D5C7AABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B55B3D1A-D3ED-4B35-B0A5-4A4E19755756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B55B3D1A-D3ED-4B35-B0A5-4A4E19755756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B55B3D1A-D3ED-4B35-B0A5-4A4E19755756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B55B3D1A-D3ED-4B35-B0A5-4A4E19755756}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

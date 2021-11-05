@@ -22,15 +22,28 @@ namespace ResourceManagement.BAL.Services
             return DynamicRepository.All<Role>("Sp_Roles_Get", null);
         }
 
+        public Role CheckRole(string role)
+        {
+            var dynamicRole = new
+            {
+                Name = role
+            };
+            return DynamicRepository.FindBy<Role>("Sp_CheckName", dynamicRole);
+        }
+
+        public int DeleteRole(int roleId)
+        {
+            return DynamicRepository.Delete(roleId, "Role");
+        }
         public int SaveRole(Role role)
         {
             var dynamicRole = new
             {
-                Id = role.Id,
-                Name = role.Name,
-                Description = role.Description,
-                CreatedDate = role.Id > 0 ? role.CreatedDate: DateTime.Now,
-                ModifiedDate = role.Id > 0 ? DateTime.Now : role.ModifiedDate,
+                RoleId = role.RoleId,
+                RoleName = role.RoleName,
+                RoleDescription = role.RoleDescription,
+                CreatedDate = role.RoleId > 0 ? role.CreatedDate: DateTime.Now,
+                ModifiedDate = DateTime.Now,
                 IsActive = role.IsActive
             };
             return DynamicRepository.AddOrUpdateDynamic("Sp_Roles_Save", dynamicRole);

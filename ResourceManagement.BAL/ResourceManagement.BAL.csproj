@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ResourceManagement.BusinessObject\ResourceManagement.BusinessObject.csproj" />
     <ProjectReference Include="..\ResourceManagement.DAL\ResourceManagement.DAL.csproj" />
   </ItemGroup>
 

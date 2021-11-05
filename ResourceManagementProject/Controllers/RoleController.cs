@@ -30,17 +30,18 @@ namespace ResourceManagementProject.Controllers
             return Json(list);
         }
 
+        [HttpPost]
         public JsonResult SearchList([FromBody] string role)
         {
-            RoleViewModel record =  RMHttpClient.GetRequestSync<RoleViewModel>("api/RoleApi/GetRoles");
+            RoleViewModel record =  RMHttpClient.GetRequestSync<RoleViewModel>("api/RoleApi/CheckRole", multiFormURIQueryString: "role=" + role);
 
             return Json(record != null ? true : false);
         }
-        public JsonResult SearchList()
-        {
-            List<RoleViewModel> list =  RMHttpClient.GetRequestSync<List<RoleViewModel>>("api/Role/Get");
-            return Json(list);
-        }
+        //public JsonResult SearchList()
+        //{
+        //    List<RoleViewModel> list =  RMHttpClient.GetRequestSync<List<RoleViewModel>>("api/Role/Get");
+        //    return Json(list);
+        //}
 
         [HttpPost]
         public JsonResult SaveRoleDetails([FromBody] RoleViewModel role)
@@ -52,7 +53,7 @@ namespace ResourceManagementProject.Controllers
         [HttpPost]
         public JsonResult Delete([FromBody] string id)
         {
-            RoleViewModel record = RMHttpClient.GetRequestSync<RoleViewModel>("api/RoleApi/GetRoles");
+            int record = RMHttpClient.GetRequestSync<int>("api/RoleApi/DeleteRole", Id: Convert.ToInt32(id));
 
             return Json(new { });
         }

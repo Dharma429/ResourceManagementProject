@@ -13,7 +13,7 @@ namespace ResourceManagement.DAL.Repository
         int Add<T>(string uspName, T item);
         int AddOrUpdateDynamic(string uspName, dynamic entity);
         List<T> All<T>(string uspName, object param);
-        void Delete(int id);
+        int Delete(int id, string tableName);
         int DeleteMultiple(string uspName, string ids);
         int DeleteMultiple<T>(string uspName, T entity);
         void Delete<T>(T entity);

@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace ResourceManagementProject.ViewModels
+namespace ResourceManagement.BAL.Models
 {
-    public class RoleViewModel
+    public class Project
     {
-        public int RoleId { get; set; }
-        public string RoleName { get; set; }
-        public string RoleDescription { get; set; }
+        public int ProjectId { get; set; }
+        public string ProjectDescription { get; set; }
         public bool IsActive { get; set; } = true;
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
-        public int BillingRate { get; set; }
     }
 }

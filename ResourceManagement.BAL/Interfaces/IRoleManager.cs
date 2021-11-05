@@ -15,5 +15,8 @@ namespace ResourceManagement.BAL.Interfaces
         IDynamicRepository DynamicRepository { get; set; }
         List<Role> GetRoles();
         int SaveRole(Role role);
+        Role CheckRole(string role);
+
+        int DeleteRole(int roleId);
     }
 }

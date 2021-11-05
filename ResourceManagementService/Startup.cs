@@ -16,6 +16,7 @@ using ResourceManagement.DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace ResourceManagementService
@@ -38,6 +39,10 @@ namespace ResourceManagementService
             services.AddSingleton(connectionString);
             services.AddControllers();
             services.AddHttpClient();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+          //  services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+
             services.AddSingleton<IRoleManager, RoleManager>();
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
